@@ -76,7 +76,7 @@ impl Cifar10Dataset {
     }
 
     /// Creates a `Cifar10Dataset` containing only the training samples.
-    pub fn train() -> Result<Self, io::Error> {
+    pub fn train() -> Self {
         let mut train_items: Vec<Cifar10Item> = Vec::new();
         let data_dir = Self::default_data_dir(); // Use default
         let train_batches = [
@@ -89,20 +89,20 @@ impl Cifar10Dataset {
         for batch_file in &train_batches {
             let path = data_dir.join(batch_file);
             eprintln!("Attempting to load training batch: {:?}", path);
-            train_items.extend(Self::read_binary_file(&path)?);
+            train_items.extend(Self::read_binary_file(&path).expect("Read train_items failed."));
         }
-        Ok(Cifar10Dataset { items: train_items })
+        Cifar10Dataset { items: train_items }
     }
 
     /// Creates a `Cifar10Dataset` containing only the test samples.
-    pub fn test() -> Result<Self, io::Error> {
+    pub fn test() -> Self {
         let mut test_items: Vec<Cifar10Item> = Vec::new();
         let data_dir = Self::default_data_dir(); // Use default
         let test_batch_name = "test_batch.bin";
         let path = data_dir.join(test_batch_name);
         eprintln!("Attempting to load test batch: {:?}", path);
-        test_items.extend(Self::read_binary_file(&path)?);
-        Ok(Cifar10Dataset { items: test_items })
+        test_items.extend(Self::read_binary_file(&path).expect("Read test_items failed."));
+        Cifar10Dataset { items: test_items }
     }
 
     /// Reads a single CIFAR-10 binary file and parses its contents into `Cifar10Item`s.

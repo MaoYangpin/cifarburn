@@ -31,12 +31,9 @@ fn main() {
         device.clone(),
     );
 
-    let test_dataset = Cifar10Dataset::test().unwrap();
-    println!("Test dataset loaded with {} samples.", test_dataset.len());
-
-    if let Some(test_item) = test_dataset.get(0) {
-        let artifact_dir = "artifacts";
-        let device = Default::default();
-        inference::infer::<MyBackend>(artifact_dir, device, test_item);
-    }
+    inference::infer::<MyBackend>(
+        artifact_dir,
+        device,
+        Cifar10Dataset::test().get(42).unwrap(),
+    );
 }

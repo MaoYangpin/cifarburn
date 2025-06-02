@@ -76,13 +76,13 @@ pub fn train<B: AutodiffBackend>(artifact_dir: &str, config: TrainingConfig, dev
         .batch_size(config.batch_size)
         .shuffle(config.seed)
         .num_workers(config.num_workers)
-        .build(Cifar10Dataset::train().expect("Failed to load training data"));
+        .build(Cifar10Dataset::train());
 
     let dataloader_test = DataLoaderBuilder::new(batcher)
         .batch_size(config.batch_size)
         .shuffle(config.seed)
         .num_workers(config.num_workers)
-        .build(Cifar10Dataset::test().expect("Failed to load test data"));
+        .build(Cifar10Dataset::test());
 
     let learner = LearnerBuilder::new(artifact_dir)
         .metric_train_numeric(AccuracyMetric::new())
