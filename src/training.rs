@@ -47,7 +47,7 @@ impl<B: Backend> ValidStep<Cifar10Batch<B>, ClassificationOutput<B>> for Cifar10
 pub struct TrainingConfig {
     pub model: Cifar10ModelConfig,
     pub optimizer: AdamConfig,
-    #[config(default = 1)]
+    #[config(default = 10)]
     pub num_epochs: usize,
     #[config(default = 64)]
     pub batch_size: usize,

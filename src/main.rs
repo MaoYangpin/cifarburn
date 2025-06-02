@@ -27,7 +27,7 @@ fn main() {
     // Train the model
     training::train::<MyAutodiffBackend>(
         artifact_dir,
-        TrainingConfig::new(Cifar10ModelConfig::new(10, 512), AdamConfig::new()),
+        TrainingConfig::new(Cifar10ModelConfig::new(), AdamConfig::new()),
         device.clone(),
     );
 
