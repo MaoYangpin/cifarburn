@@ -47,7 +47,7 @@ impl<B: Backend> ValidStep<Cifar10Batch<B>, ClassificationOutput<B>> for Cifar10
 pub struct TrainingConfig {
     pub model: Cifar10ModelConfig,
     pub optimizer: AdamConfig,
-    #[config(default = 10)]
+    #[config(default = 1)]
     pub num_epochs: usize,
     #[config(default = 64)]
     pub batch_size: usize,
@@ -65,6 +65,7 @@ pub fn train<B: AutodiffBackend>(artifact_dir: &str, config: TrainingConfig, dev
     std::fs::remove_dir_all(artifact_dir).ok();
     std::fs::create_dir_all(artifact_dir).ok();
     config
+        // .model
         .save(format!("{artifact_dir}/config.json"))
         .expect("Config should be saved successfully");
 

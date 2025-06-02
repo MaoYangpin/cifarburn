@@ -1,6 +1,6 @@
 use crate::{
     data::{Cifar10Batcher, Cifar10Item},
-    model::Cifar10ModelConfig,
+    training::TrainingConfig,
 };
 use burn::{
     data::dataloader::batcher::Batcher,
@@ -10,13 +10,13 @@ use burn::{
 
 #[allow(unused)]
 pub fn infer<B: Backend>(artifact_dir: &str, device: B::Device, item: Cifar10Item) {
-    let config = Cifar10ModelConfig::load(format!("{artifact_dir}/config.json"))
+    let config = TrainingConfig::load(format!("{artifact_dir}/config.json"))
         .expect("Config should exist for the model; run train first");
     let record = CompactRecorder::new()
         .load(format!("{artifact_dir}/model").into(), &device)
         .expect("Trained model should exist; run train first");
 
-    let model = config.init::<B>(&device).load_record(record);
+    let model = config.model.init::<B>(&device).load_record(record);
 
     let label = item.label;
     let batcher = Cifar10Batcher;

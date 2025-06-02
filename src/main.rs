@@ -24,6 +24,7 @@ fn main() {
     // All the training artifacts will be saved in this directory
     let artifact_dir = "/tmp/cifar10";
 
+    // println!("test: {:#?} ", Cifar10Dataset::test().get(42).unwrap());
     // Train the model
     training::train::<MyAutodiffBackend>(
         artifact_dir,
