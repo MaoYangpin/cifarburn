@@ -20,7 +20,6 @@ fn main() {
     // Create a default Wgpu device
     let device = burn::backend::wgpu::WgpuDevice::default();
     // let device = CudaDevice::default();
-
     // All the training artifacts will be saved in this directory
     let artifact_dir = "/tmp/cifar10";
 
