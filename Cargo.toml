@@ -6,7 +6,7 @@ edition = "2024"
 [dependencies]
 burn = { version = "0.17.0", features = ["train", "vision", "cuda"] }
 burn-cuda = "0.17.0"
-burn-dataset = { version = "0.17.0", features = ["audio", "vision", "dataframe"] }
+burn-dataset = { version = "0.17.0", features = ["audio", "vision"] }
 dirs = "6.0.0"
 
 # burn-tch = "0.17.0"
