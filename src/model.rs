@@ -27,7 +27,6 @@ pub struct Cifar10ModelConfig {
     dropout: f64,
 }
 
-#[allow(unused)]
 impl Cifar10ModelConfig {
     pub fn init<B: Backend>(&self, device: &B::Device) -> Cifar10Model<B> {
         Cifar10Model {
@@ -43,7 +42,6 @@ impl Cifar10ModelConfig {
     }
 }
 
-#[allow(unused)]
 impl<B: Backend> Cifar10Model<B> {
     pub fn forward(&self, images: Tensor<B, 4>) -> Tensor<B, 2> {
         let [batch_size, ..] = images.dims();

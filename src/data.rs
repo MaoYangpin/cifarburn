@@ -15,7 +15,6 @@ pub struct Cifar10Item {
     pub label: u8,
 }
 
-#[allow(unused)]
 #[derive(Clone, Debug)]
 pub struct Cifar10Batch<B: Backend> {
     pub images: Tensor<B, 4>, // [batch_size, 3, 32, 32]

@@ -8,7 +8,6 @@ use burn::{
     record::{CompactRecorder, Recorder},
 };
 
-#[allow(unused)]
 pub fn infer<B: Backend>(artifact_dir: &str, device: B::Device, item: Cifar10Item) {
     let config = TrainingConfig::load(format!("{artifact_dir}/config.json"))
         .expect("Config should exist for the model; run train first");

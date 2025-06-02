@@ -59,7 +59,6 @@ pub struct TrainingConfig {
     pub learning_rate: f64,
 }
 
-#[allow(unused)]
 pub fn train<B: AutodiffBackend>(artifact_dir: &str, config: TrainingConfig, device: B::Device) {
     // Create artifact directory
     std::fs::remove_dir_all(artifact_dir).ok();
